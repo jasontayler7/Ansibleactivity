@@ -1,0 +1,23 @@
+---
+- name: "Healthcheck and Deployement"
+  hosts: 52.66.13.193
+  become: true
+  become_user: root
+  gather_facts: true
+  tasks:
+   - name: "copying war into tomcat webapps folder"
+     command: cp /artifacts/${TAG_NAME}.war /var/lib/tomcat8/webapps/
+          
+   - name: "restarting server"
+     service:
+       name: tomcat8
+       state: restarted
+
+   - name: "wait for website to come up"
+     uri:
+       url: "http://52.66.13.193:8080/${TAG_NAME}"
+       status_code: 200
+     register: result
+     until: result.status == 200
+     retries: 5
+     delay: 10

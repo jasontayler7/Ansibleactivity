@@ -1,0 +1,13 @@
+---
+ - name: "Installing EPEL-RELEASE in Redhat"
+   yum: 
+     name: epel-release
+     state: present
+ - name: "Installing nginx in Redhat"
+   yum:
+     name: nginx
+     state: present
+ - name: "starting nginx"
+   service:
+     name: nginx
+     state: started

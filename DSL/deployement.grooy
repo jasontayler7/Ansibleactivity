@@ -1,0 +1,16 @@
+job('DeploymentBteam')
+{
+  parameters
+  {
+     
+    stringParam('TAG_NAME', '')
+   }
+  
+ steps
+  {
+	shell('''
+#!/bin/bash
+ansible-playbook -u root /home/ec2-user/roles/Deployement.yml -e TAG_NAME=$TAG_NAME''')
+  }
+ 
+}

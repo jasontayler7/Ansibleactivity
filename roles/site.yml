@@ -1,0 +1,5 @@
+---
+ - hosts: 192.168.0.28
+   roles:
+     - tomcat 
+     - nginx

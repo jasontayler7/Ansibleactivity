@@ -1,0 +1,9 @@
+---
+- name: "installing nginx in ubuntu"
+  apt:
+    name: nginx
+    state: present
+- name: "starting nginx"
+  service:
+    name: nginx
+    state: started

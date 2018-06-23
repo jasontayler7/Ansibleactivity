@@ -1,0 +1,44 @@
+---
+# tasks file for jenkins
+
+   - name: "Add repository"
+     apt_repository: 
+       repo: ppa:webupd8team/java
+       state: present
+
+   - name: "updating"
+     apt:
+       update_cache: yes
+
+   - name: Debian | Accept Oracle Java License
+     debconf:
+       name: "oracle-java8-installer"
+       question: 'shared/accepted-oracle-license-v1-1'
+       value: 'true'
+       vtype: 'select'
+
+   - name: "set Java 8 as your default Java version"
+     apt:
+       name: oracle-java8-set-default
+       state: present
+
+   - name: "set JAVA_HOME and JRE_HOME environment variables"
+     lineinfile:
+       path: /etc/environment
+       line: "JAVA_HOME=/usr/lib/jvm/java-8-oracle"
+       line: "JRE_HOME=/usr/lib/jvm/java-8-oracle/jre"
+
+   - name: "add the repository key to the system"
+     shell: wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+
+   - name: "append the Debian package repository address to the server's sources.list"
+     shell: echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+
+   - name: "Installing Jenkins"
+     apt: 
+       name: jenkins
+       state: present
+       update_cache: yes 
+     notify: 
+       - start jenkins
+      
