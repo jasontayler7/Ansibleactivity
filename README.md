@@ -22,23 +22,23 @@
 
 ###### 3. Jenkins Installation in master using ansible role.
 
-   ![ Setup User Permission ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/UserPermission.png)
+![ Setup User Permission ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/UserPermission.png)
 
    1. 
 
-      ![ Manage & assignroles ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Manageandassignroles.png)
+![ Manage & assignroles ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Manageandassignroles.png)
 
    2. 
 
 ###### 4. Master Slave Setup.
 
-   ![ Job for Master & Slave ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Jobsandmasterslave.png)
+![ Job for Master & Slave ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Jobsandmasterslave.png)
 
    1. 
 
 ###### 5. Infra setup in slave using ansible roles.
 
-   ![ Infrastructure setup using Ansible and Jenkins ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/INFRABteam.png)
+![ Infrastructure setup using Ansible and Jenkins ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/INFRABteam.png)
 
 [Infra Job DSL]: https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/DSL/infra.groovy	"Job DSL for building required Infra for completing assignment"
 
@@ -48,13 +48,13 @@
 
 ###### 6. Tag creator Job
 
-   ![ Tag creator ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/tagcreatorBteam.png)
+![ Tag creator ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/tagcreatorBteam.png)
 
    1. 
 
 ###### 7. Tag based build job
 
-   ![ Jenkins Build job ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/BuildBteam.png)
+![ Jenkins Build job ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/BuildBteam.png)
 
    1. 
 
@@ -62,7 +62,7 @@
 
    
 
-   ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
+![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
 
    1. 
 
