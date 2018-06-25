@@ -55,12 +55,9 @@ steps {
 }
 }
 ```
-
-
-
-   1. Tomcat Role
-   2. Java Role
-   3. Nginx Role
+   ####### 1. Tomcat Role
+   ####### 2. Java Role
+   ####### 3. Nginx Role
 
 ###### 6. Tag creator Job
 
@@ -131,10 +128,11 @@ steps {
              branch('master')
             }
            }
-      
-       
-      
-          
+
+
+​       
+​      
+​          
         goals('install') 
              rootPOM("Spring3HibernateApp/pom.xml")
               mavenInstallation('Maven3.5.3')
@@ -148,14 +146,9 @@ steps {
         }
       }
       ```
-
-      
-
    2. 
 
 ###### 8. Tag based deployement.
-
-   
 
 ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
 
@@ -191,7 +184,7 @@ steps {
 
    2. 
 
-   ####### 3. Deployment DSL Job
+###### 3. Deployment DSL Job
 
       ```groovy
       job('DeploymentBteam')
@@ -211,6 +204,5 @@ steps {
        
       }
       ```
-
 
 ![ Tag based deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Tagbaseddeployment.png)
