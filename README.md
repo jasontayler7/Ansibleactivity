@@ -37,8 +37,6 @@ $ sudo apt-get install ansible
 
 ###### 5. Infra setup in slave using ansible roles.
 
-![ Infrastructure setup using Ansible and Jenkins ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/INFRABteam.png)
-
 ###### 5.1. Infrastructure Job DSL
 
 ```groovy
@@ -58,9 +56,9 @@ Created following Ansible role for setting up infrastructure ( Java, Tomcat Ngin
 
 https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/roles/site.yml
 
-###### 6. Tag creator Job
+![ Infrastructure setup using Ansible and Jenkins ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/INFRABteam.png)
 
-![ Tag creator ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/tagcreatorBteam.png)
+###### 6. Tag creator Job
 
    ###### 6.1. Tag creator Job DSL
 
@@ -99,10 +97,9 @@ https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/roles/site.yml
    
   }
 ```
+![ Tag creator ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/tagcreatorBteam.png)
 
 ###### 7. Tag based build job
-
-![ Jenkins Build job ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/BuildBteam.png)
 
    ###### 7.1. Build Job DSL
 
@@ -149,10 +146,9 @@ https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/roles/site.yml
 
       }
 ```
+![ Jenkins Build job ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/BuildBteam.png)
 
 ###### 8. Tag based deployement.
-
-![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
 
 ###### 8.1. Deployment playbook
 
@@ -181,6 +177,7 @@ https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/roles/site.yml
      retries: 5
      delay: 10
 ```
+![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
 
 ###### 8.3. Deployment DSL Job
 
