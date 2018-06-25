@@ -1,7 +1,6 @@
 
 
-
-#### Details of the tasks performed for completing Ansible team activity
+#### Details of the activities performed for completing Ansible team activity
 
 | Team Members |
 | ------------ |
@@ -13,19 +12,22 @@
 
 ##### Top level categorization of tasks performed for completing the assignment.
 
-###### 1. Created organisation in github.
+###### 1. Created organisation in github added members.
 
 ![github.com/Team-B-Ninja](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/TeamActivity-githubOrg.png)
 
-###### 2. Ansible Installation in master.
-
-   1. 
-
-###### 3. Jenkins Installation in master using ansible role.
+###### 2. Installed Ansible in control machine.
+   ###### 2.1. We used an Ubuntu 16.04 server for this activity. Executed following commands to complete installation:
+```sh
+$ sudo apt-add-repository ppa:ansible/ansible
+$ sudo apt-get update
+$ sudo apt-get install ansible
+```
+###### 3. Installed Jenkins in control machine using ansible role.
 
 ![ Setup User Permission ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/UserPermission.png)
 
-   1. 
+   ###### 3.1. 
 
 ![ Manage & assignroles ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Manageandassignroles.png)
 
@@ -41,7 +43,7 @@
 
 ![ Infrastructure setup using Ansible and Jenkins ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/INFRABteam.png)
 
-###### 5.1. Infrastructure Job DSL
+####### 1. Infrastructure Job DSL
 
 ```groovy
 job('INFRABteam'){
@@ -56,15 +58,15 @@ steps {
 }
 }
 ```
-###### 5.2. Tomcat Role
-###### 5.3. Java Role
-###### 5.4. Nginx Role
+   ####### 1. Tomcat Role
+   ####### 2. Java Role
+   ####### 3. Nginx Role
 
 ###### 6. Tag creator Job
 
 ![ Tag creator ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/tagcreatorBteam.png)
 
-###### 6.1. Tag creator Job DSL
+   ####### 1. Tag creator Job DSL
 
       ```groovy
       job('tagcreatorBteam')
@@ -106,7 +108,7 @@ steps {
 
 ![ Jenkins Build job ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/BuildBteam.png)
 
-###### 7.1. Build Job DSL
+   ####### 1. Build Job DSL
 
       ```groovy
       mavenJob('BuildBteam') {
@@ -129,6 +131,11 @@ steps {
              branch('master')
             }
            }
+
+
+​       
+​      
+​          
         goals('install') 
              rootPOM("Spring3HibernateApp/pom.xml")
               mavenInstallation('Maven3.5.3')
@@ -148,7 +155,7 @@ steps {
 
 ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
 
-###### 8.1. Deployment playbook
+      ####### 1. Deployment playbook
 
 ```yml
 ---
@@ -180,7 +187,7 @@ steps {
 
    2. 
 
-###### 8.4. Deployment DSL Job
+###### 3. Deployment DSL Job
 
       ```groovy
       job('DeploymentBteam')
