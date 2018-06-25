@@ -1,7 +1,7 @@
 
 
 
-#### Details of the activities performed for completing Ansible team activity
+#### Details of the tasks performed for completing Ansible team activity
 
 | Team Members |
 | ------------ |
