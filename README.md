@@ -23,7 +23,7 @@ $ sudo apt-add-repository ppa:ansible/ansible
 $ sudo apt-get update
 $ sudo apt-get install ansible
 ```
-###### 3. Installed Jenkins in control machine using ansible role.
+###### 3. Installed Jenkins in control machine using ansible role and assigned permissions to users.
 
 ![ Setup User Permission ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/UserPermission.png)
 
