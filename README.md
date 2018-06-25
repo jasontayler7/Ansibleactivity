@@ -40,7 +40,7 @@
 
 ![ Infrastructure setup using Ansible and Jenkins ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/INFRABteam.png)
 
-Infrastructure Job DSL
+####### 1. Infrastructure Job DSL
 
 ```groovy
 job('INFRABteam'){
@@ -66,7 +66,7 @@ steps {
 
 ![ Tag creator ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/tagcreatorBteam.png)
 
-   1. Tag creator Job DSL
+   ####### 1. Tag creator Job DSL
 
       ```groovy
       job('tagcreatorBteam')
@@ -108,7 +108,7 @@ steps {
 
 ![ Jenkins Build job ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/BuildBteam.png)
 
-   1. Build Job DSL
+   ####### 1. Build Job DSL
 
       ```groovy
       mavenJob('BuildBteam') {
@@ -159,7 +159,39 @@ steps {
 
 ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
 
-   1. Deployment DSL Job
+      ####### 1. Deployment playbook
+
+```yml
+---
+- name: "Healthcheck and Deployement"
+  hosts: 52.66.13.193
+  become: true
+  become_user: root
+  gather_facts: true
+  tasks:
+   - name: "copying war into tomcat webapps folder"
+     command: cp /artifacts/${TAG_NAME}.war /var/lib/tomcat8/webapps/
+          
+   - name: "restarting server"
+     service:
+       name: tomcat8
+       state: restarted
+
+   - name: "wait for website to come up"
+     uri:
+       url: "http://52.66.13.193:8080/${TAG_NAME}"
+       status_code: 200
+     register: result
+     until: result.status == 200
+     retries: 5
+     delay: 10
+```
+
+   1. q
+
+   2. 
+
+   ####### 3. Deployment DSL Job
 
       ```groovy
       job('DeploymentBteam')
