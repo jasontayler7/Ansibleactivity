@@ -12,15 +12,15 @@
 
 ##### Top level categorization of tasks performed for completing the assignment.
 
-1. Created organisation in github.
+###### 1. Created organisation in github.
 
-   ![github.com/Team-B-Ninja](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/TeamActivity-githubOrg.png)
+![github.com/Team-B-Ninja](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/TeamActivity-githubOrg.png)
 
-2. Ansible Installation in master.
+###### 2. Ansible Installation in master.
 
    1. 
 
-3. Jenkins Installation in master using ansible role and managing user permissions.
+###### 3. Jenkins Installation in master using ansible role.
 
    ![ Setup User Permission ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/UserPermission.png)
 
@@ -30,41 +30,41 @@
 
    2. 
 
-4. Master Slave Setup.
+###### 4. Master Slave Setup.
 
    ![ Job for Master & Slave ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Jobsandmasterslave.png)
 
    1. 
 
-5. Infra setup in slave using ansible roles.
+###### 5. Infra setup in slave using ansible roles.
 
    ![ Infrastructure setup using Ansible and Jenkins ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/INFRABteam.png)
+
+[Infra Job DSL]: https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/DSL/infra.groovy	"Job DSL for building required Infra for completing assignment"
 
    1. Tomcat Role
    2. Java Role
    3. Nginx Role
 
-6. Tag creator Job
+###### 6. Tag creator Job
 
    ![ Tag creator ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/tagcreatorBteam.png)
 
    1. 
 
-7. Tag based build job
+###### 7. Tag based build job
 
    ![ Jenkins Build job ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/BuildBteam.png)
 
    1. 
 
-8. Tag based deployement.
-
-   ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
-
-   ![ Tag based deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Tagbaseddeployment.png)
+###### 8. Tag based deployement.
 
    
+
+   ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
 
    1. 
 
 
-
+![ Tag based deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Tagbaseddeployment.png)
