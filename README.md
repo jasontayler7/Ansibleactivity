@@ -43,7 +43,7 @@ $ sudo apt-get install ansible
 
 ![ Infrastructure setup using Ansible and Jenkins ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/INFRABteam.png)
 
-####### 1. Infrastructure Job DSL
+###### 5.1. Infrastructure Job DSL
 
 ```groovy
 job('INFRABteam'){
@@ -58,15 +58,17 @@ steps {
 }
 }
 ```
-   ####### 1. Tomcat Role
-   ####### 2. Java Role
-   ####### 3. Nginx Role
+###### 5.2. Tomcat Role
+
+###### 5.3. Java Role
+
+###### 5.4. Nginx Role
 
 ###### 6. Tag creator Job
 
 ![ Tag creator ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/tagcreatorBteam.png)
 
-   ####### 1. Tag creator Job DSL
+   ###### 6.1. Tag creator Job DSL
 
       ```groovy
       job('tagcreatorBteam')
@@ -108,54 +110,60 @@ steps {
 
 ![ Jenkins Build job ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/BuildBteam.png)
 
-   ####### 1. Build Job DSL
+   ###### 7.1. Build Job DSL
 
-      ```groovy
-      mavenJob('BuildBteam') {
-      label('Slave')
-        
-        parameters
-        {
-          gitParam('TAG_NAME'){
-          type('TAG')
-          }
-         }
-        scm 
-        {
-          git
-           {
-            remote
-             {
-               url('https://github.com/Team-B-Ninja/ContinuousIntegration.git')
-              }
-             branch('master')
-            }
-           }
-
-
-​       
-​      
-​          
-        goals('install') 
-             rootPOM("Spring3HibernateApp/pom.xml")
-              mavenInstallation('Maven3.5.3')
-      
-       postBuildSteps
-        {
-      	shell('''
-      #!/bin/bash
-      echo $TAG_NAME
-      mv /root/workspace/BuildBteam/Spring3HibernateApp/target/Spring3HibernateApp.war /artifacts/${TAG_NAME}.war''')
-        }
+```groovy
+ mavenJob('BuildBteam') {
+  label('Slave')
+    
+    parameters
+    {
+      gitParam('TAG_NAME'){
+      type('TAG')
       }
-      ```
+     }
+    scm 
+    {
+      git
+       {
+        remote
+         {
+           url('https://github.com/Team-B-Ninja/ContinuousIntegration.git')
+          }
+         branch('master')
+        }
+       }
+       goals('install') 
+
+             rootPOM("Spring3HibernateApp/pom.xml")
+
+              mavenInstallation('Maven3.5.3')
+
+       postBuildSteps
+
+        {
+
+      	shell('''
+
+      #!/bin/bash
+
+      echo $TAG_NAME
+
+      mv /root/workspace/BuildBteam/Spring3HibernateApp/target/Spring3HibernateApp.war /artifacts/${TAG_NAME}.war''')
+
+        }
+
+      }
+```
+
+
    2. 
 
 ###### 8. Tag based deployement.
 
 ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
 
-      ####### 1. Deployment playbook
+###### 8.1. Deployment playbook
 
 ```yml
 ---
@@ -187,7 +195,7 @@ steps {
 
    2. 
 
-###### 3. Deployment DSL Job
+###### 8.3. Deployment DSL Job
 
       ```groovy
       job('DeploymentBteam')
