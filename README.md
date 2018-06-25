@@ -20,7 +20,7 @@
 
    1. 
 
-3. Jenkins Installation in master using ansible role.
+3. Jenkins Installation in master using ansible role and managing user permissions.
 
    ![ Setup User Permission ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/UserPermission.png)
 
@@ -58,9 +58,11 @@
 
 8. Tag based deployement.
 
+   ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
+
    ![ Tag based deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Tagbaseddeployment.png)
 
-   ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
+   
 
    1. 
 
