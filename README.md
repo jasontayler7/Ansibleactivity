@@ -27,23 +27,19 @@ $ sudo apt-get install ansible
 
 ![ Setup User Permission ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/UserPermission.png)
 
-   ###### 3.1. 
+   ###### 3.1. Manage & assign roles  
 
-![ Manage & assignroles ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Manageandassignroles.png)
-
-   2. 
+![ Manage & assign roles ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Manageandassignroles.png)
 
 ###### 4. Master Slave Setup.
 
 ![ Job for Master & Slave ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Jobsandmasterslave.png)
 
-   1. 
-
 ###### 5. Infra setup in slave using ansible roles.
 
 ![ Infrastructure setup using Ansible and Jenkins ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/INFRABteam.png)
 
-####### 1. Infrastructure Job DSL
+###### 5.1. Infrastructure Job DSL
 
 ```groovy
 job('INFRABteam'){
@@ -58,104 +54,107 @@ steps {
 }
 }
 ```
-   ####### 1. Tomcat Role
-   ####### 2. Java Role
-   ####### 3. Nginx Role
+Created following Ansible role for setting up infrastructure ( Java, Tomcat Nginx and Jenkins )
+
+https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/roles/site.yml
 
 ###### 6. Tag creator Job
 
 ![ Tag creator ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/tagcreatorBteam.png)
 
-   ####### 1. Tag creator Job DSL
+   ###### 6.1. Tag creator Job DSL
 
-      ```groovy
-      job('tagcreatorBteam')
-      {
-        parameters
-        {
-             stringParam('TAG_NAME', '')
-          gitParam('SelectBranch'){
-          type('BRANCH')
-          }
-         }
-        scm 
-        {
-          git
-           {
-            remote
-             {
-               url('git@github.com:Team-B-Ninja/ContinuousIntegration.git')
-              }
-             branch('master')
-            }
-           }
-       steps
-        {
-      	shell('''
-      #!/bin/bash
-      cd /var/lib/jenkins/workspace/tagcreatorBteam
-      git checkout master
-      git tag -a ${TAG_NAME} -m "This is NINJA Team B"
-      git push -u origin master
-      git push origin --tags
-      git tag''')
-        }
-       
+```groovy
+  job('tagcreatorBteam')
+  {
+    parameters
+    {
+         stringParam('TAG_NAME', '')
+      gitParam('SelectBranch'){
+      type('BRANCH')
       }
-      ```
+     }
+    scm 
+    {
+      git
+       {
+        remote
+         {
+           url('git@github.com:Team-B-Ninja/ContinuousIntegration.git')
+          }
+         branch('master')
+        }
+       }
+   steps
+    {
+  	shell('''
+  #!/bin/bash
+  cd /var/lib/jenkins/workspace/tagcreatorBteam
+  git checkout master
+  git tag -a ${TAG_NAME} -m "This is NINJA Team B"
+  git push -u origin master
+  git push origin --tags
+  git tag''')
+    }
+   
+  }
+```
 
 ###### 7. Tag based build job
 
 ![ Jenkins Build job ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/BuildBteam.png)
 
-   ####### 1. Build Job DSL
+   ###### 7.1. Build Job DSL
 
-      ```groovy
-      mavenJob('BuildBteam') {
-      label('Slave')
-        
-        parameters
-        {
-          gitParam('TAG_NAME'){
-          type('TAG')
-          }
-         }
-        scm 
-        {
-          git
-           {
-            remote
-             {
-               url('https://github.com/Team-B-Ninja/ContinuousIntegration.git')
-              }
-             branch('master')
-            }
-           }
-
-
-​       
-​      
-​          
-        goals('install') 
-             rootPOM("Spring3HibernateApp/pom.xml")
-              mavenInstallation('Maven3.5.3')
-      
-       postBuildSteps
-        {
-      	shell('''
-      #!/bin/bash
-      echo $TAG_NAME
-      mv /root/workspace/BuildBteam/Spring3HibernateApp/target/Spring3HibernateApp.war /artifacts/${TAG_NAME}.war''')
-        }
+```groovy
+ mavenJob('BuildBteam') {
+  label('Slave')
+    
+    parameters
+    {
+      gitParam('TAG_NAME'){
+      type('TAG')
       }
-      ```
-   2. 
+     }
+    scm 
+    {
+      git
+       {
+        remote
+         {
+           url('https://github.com/Team-B-Ninja/ContinuousIntegration.git')
+          }
+         branch('master')
+        }
+       }
+       goals('install') 
+
+             rootPOM("Spring3HibernateApp/pom.xml")
+
+              mavenInstallation('Maven3.5.3')
+
+       postBuildSteps
+
+        {
+
+      	shell('''
+
+      #!/bin/bash
+
+      echo $TAG_NAME
+
+      mv /root/workspace/BuildBteam/Spring3HibernateApp/target/Spring3HibernateApp.war /artifacts/${TAG_NAME}.war''')
+
+        }
+
+      }
+```
 
 ###### 8. Tag based deployement.
 
 ![ Deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/DeploymentBteam.png)
 
-      ####### 1. Deployment playbook
+###### 8.1. Deployment playbook
 
 ```yml
 ---
@@ -183,29 +182,25 @@ steps {
      delay: 10
 ```
 
-   1. q
+###### 8.3. Deployment DSL Job
 
-   2. 
-
-###### 3. Deployment DSL Job
-
-      ```groovy
-      job('DeploymentBteam')
-      {
-        parameters
-        {
-           
-          stringParam('TAG_NAME', '')
-         }
-        
-       steps
-        {
-      	shell('''
-      #!/bin/bash
-      ansible-playbook -u root /home/ec2-user/roles/Deployement.yml -e TAG_NAME=$TAG_NAME''')
-        }
+```groovy
+  job('DeploymentBteam')
+  {
+    parameters
+    {
        
-      }
-      ```
+      stringParam('TAG_NAME', '')
+     }
+    
+   steps
+    {
+  	shell('''
+  #!/bin/bash
+  ansible-playbook -u root /home/ec2-user/roles/Deployement.yml -e TAG_NAME=$TAG_NAME''')
+    }
+   
+  }
+```
 
 ![ Tag based deployment ](https://github.com/Team-B-Ninja/Ansibleactivity/blob/master/Media/Tagbaseddeployment.png)
